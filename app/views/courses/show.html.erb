@@ -20,5 +20,10 @@
   <%= @course.user.name %>
 </p>
 
+<p>
+  <strong>Image:</strong>
+<%= link_to image_tag(@course.image.url(:med)), @course.image.url %>
+</p>
+
 <%= link_to 'Edit', edit_course_path(@course) %> |
 <%= link_to 'Back', courses_path %>
