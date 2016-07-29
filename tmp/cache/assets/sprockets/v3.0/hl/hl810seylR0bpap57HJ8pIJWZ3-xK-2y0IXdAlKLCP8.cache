@@ -1,0 +1,9 @@
+I"£(function() {
+  $(function() {
+    return $(document).on('blur', '#course_name', function(evt) {
+      return alert('welcome ajax');
+    });
+  });
+
+}).call(this);
+:ET

@@ -1,0 +1,17 @@
+class Role < ActiveRecord::Base
+has_many :users
+
+def admin?
+byebug
+  self.role.name == "Admin"
+end
+
+def partner?
+  self.role.name == "Partner"
+end
+
+def regular?
+  self.role.name == "Regular"
+end
+
+end

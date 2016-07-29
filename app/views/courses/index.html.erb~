@@ -1,0 +1,81 @@
+<h1>Listing Courses</h1>
+
+<table id='courses'>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @courses.each do |course| %>
+      <tr>
+        <td><%= course.name %></td>
+        <td><%= course.description %></td>
+        <td><%= course.price %></td>
+        <td><%= course.user.name %></td>
+        <td><%= link_to 'Show', course %></td>
+        <td>
+  <% if can? :update, course %>
+    <%= link_to 'Edit', edit_course_path(course) %>
+  <% end %>
+</td>
+
+<td>
+  <% if can? :destroy, course %>
+    <%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+</td>
+
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= form_for(@course, remote: true) do |f| %>
+  <% if @course.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h2>
+
+      <ul>
+      <% @course.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br>
+    <%= f.text_field :price %>
+  </div>
+
+<div class="field">
+<%= f.select :country, options_for_select(@countries.collect { |country|
+    [country.name.titleize, country.id] }, 1), {}, { id: 'countries_select' } %></div>
+
+<div class="field">
+  <%= f.select :city, options_for_select(@cities.collect { |city|
+    [city.name.titleize, city.id] }, 0), {}, { id: 'cities_select' } %></div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+<% if can? :create, Course %>
+  <%# link_to 'New Course', new_course_path %>
+<% end %>
