@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.6'
 gem 'cancancan', '~> 1.10'
 gem 'devise'
+gem 'paperclip'
 
   #gem "meta_search", '>= 1.1.0.pre'#for rails less than 4
   #gem 'activeadmin'#for rails less than 4
