@@ -11526,3 +11526,4 @@ Migrating to CreateCourses (20160723045360)
             WHERE name='index_users_on_role_id' AND type='index'
 [0m
   [1m[36mCourse Load (1.1ms)[0m  [1mSELECT "courses".* FROM "courses"[0m
+  [1m[35mCourse Load (0.3ms)[0m  SELECT "courses".* FROM "courses"
