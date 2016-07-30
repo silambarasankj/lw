@@ -10017,3 +10017,50 @@ Processing by CoursesController#index as HTML
   [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
   Rendered courses/index.html.erb within layouts/application (15.4ms)
 Completed 200 OK in 45ms (Views: 36.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/courses/12" for 127.0.0.1 at 2016-07-29 20:30:21 +0530
+Processing by CoursesController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mCourse Load (0.2ms)[0m  [1mSELECT  "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT 1[0m  [["id", 12]]
+  [1m[35mRole Load (0.1ms)[0m  SELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered courses/show.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 33ms (Views: 25.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/courses/12/edit" for 127.0.0.1 at 2016-07-29 20:30:23 +0530
+Processing by CoursesController#edit as HTML
+  Parameters: {"id"=>"12"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT  "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT 1[0m  [["id", 12]]
+  [1m[35mRole Load (0.1ms)[0m  SELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT 1  [["id", 3]]
+  Rendered courses/_form.html.erb (2.8ms)
+  Rendered courses/edit.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 46ms (Views: 35.0ms | ActiveRecord: 0.5ms)
+
+
+Started PATCH "/courses/12" for 127.0.0.1 at 2016-07-29 20:30:27 +0530
+Processing by CoursesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"go/draxu8KkNpFZ/sSGz2DgwZxgVNea+6mLE8gM/IBTWZn8uC/4AuWBZuG1jxj2tNrO3ph05DBzkiUFnej1CuA==", "course"=>{"name"=>"paperclip", "description"=>"paperclip test", "price"=>"566.0"}, "commit"=>"Update Course", "id"=>"12"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mCourse Load (0.1ms)[0m  SELECT  "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT 1  [["id", 12]]
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/courses/12
+Completed 302 Found in 12ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/courses/12" for 127.0.0.1 at 2016-07-29 20:30:27 +0530
+Processing by CoursesController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT  "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT 1[0m  [["id", 12]]
+  [1m[35mRole Load (0.1ms)[0m  SELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered courses/show.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 30ms (Views: 22.9ms | ActiveRecord: 0.4ms)
+  [1m[36mRole Load (5.1ms)[0m  [1mSELECT "roles".* FROM "roles"[0m
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users"
