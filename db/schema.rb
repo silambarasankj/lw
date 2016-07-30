@@ -61,8 +61,20 @@ ActiveRecord::Schema.define(version: 20160729115735) do
     t.datetime "updated_at", null: false
   end
 
-# Could not dump table "courses" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
+  create_table "courses", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.decimal  "price",              precision: 5, scale: 2
+    t.integer  "user_id"
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  add_index "courses", ["user_id"], name: "index_courses_on_user_id"
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
