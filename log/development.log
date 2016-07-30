@@ -10627,3 +10627,384 @@ Completed 200 OK in 62ms (Views: 53.2ms | ActiveRecord: 0.9ms)
             FROM sqlite_temp_master
             WHERE name='index_cities_on_country_id' AND type='index'
 
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.2ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_active_admin_comments_on_resource_type_and_resource_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_active_admin_comments_on_resource_type_and_resource_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_active_admin_comments_on_author_type_and_author_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_active_admin_comments_on_author_type_and_author_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_active_admin_comments_on_namespace' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_active_admin_comments_on_namespace' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_admin_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_admin_users_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_admin_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_admin_users_on_email' AND type='index'
+[0m
+  [1m[35m (7.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_cities_on_country_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_cities_on_country_id' AND type='index'
+
+  [1m[36mUser Load (1.9ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsers (20160723045130)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mDROP TABLE "users"[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "role_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  CREATE  INDEX "index_users_on_role_id" ON "users" ("role_id")
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160723045130"]]
+  [1m[35m (188.5ms)[0m  commit transaction
+Migrating to AddDeviseToUsers (20160723051016)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "users" ADD "email" varchar DEFAULT '' NOT NULL
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD "encrypted_password" varchar DEFAULT '' NOT NULL[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD "reset_password_token" varchar
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD "reset_password_sent_at" datetime[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD "remember_created_at" datetime
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD "sign_in_count" integer DEFAULT 0 NOT NULL[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD "current_sign_in_at" datetime
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "users" ADD "last_sign_in_at" datetime[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "users" ADD "current_sign_in_ip" varchar
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "users" ADD "last_sign_in_ip" varchar[0m
+  [1m[35m (0.2ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_role_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_role_id' AND type='index'
+
+  [1m[36m (0.3ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_role_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_role_id' AND type='index'
+[0m
+  [1m[35m (0.6ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160723051016"]]
+  [1m[35m (150.4ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_active_admin_comments_on_resource_type_and_resource_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_active_admin_comments_on_resource_type_and_resource_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_active_admin_comments_on_author_type_and_author_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_active_admin_comments_on_author_type_and_author_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_active_admin_comments_on_namespace' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_active_admin_comments_on_namespace' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_admin_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_admin_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_admin_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_admin_users_on_email' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_cities_on_country_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_cities_on_country_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_role_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_role_id' AND type='index'
+
+  [1m[36mUser Load (1.8ms)[0m  [1mSELECT "users".* FROM "users"[0m
+
+
+Started GET "/admin/users" for 127.0.0.1 at 2016-07-30 11:25:10 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+Completed 401 Unauthorized in 31ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-07-30 11:25:10 +0530
+Processing by Devise::SessionsController#new as HTML
+DEPRECATION WARNING: [Devise] Changing the sanitized parameters through "Devise::ParameterSanitizer#for(sign_up) is deprecated and it will be removed from Devise 4.2.
+Please use the `permit` method to add or remove any key:
+
+  To add any new key, use the `keys` keyword argument:
+  devise_parameter_sanitizer.permit(:sign_up, keys: [:param1, :param2, :param3])
+
+  To remove any existing key, use the `except` keyword argument:
+  devise_parameter_sanitizer.permit(:sign_up, except: [:email])
+ (called from configure_permitted_parameters at /home/rajesh/livewire/app/controllers/application_controller.rb:15)
+DEPRECATION WARNING: [Devise] Changing the sanitized parameters through "Devise::ParameterSanitizer#for(account_update) is deprecated and it will be removed from Devise 4.2.
+Please use the `permit` method to add or remove any key:
+
+  To add any new key, use the `keys` keyword argument:
+  devise_parameter_sanitizer.permit(:account_update, keys: [:param1, :param2, :param3])
+
+  To remove any existing key, use the `except` keyword argument:
+  devise_parameter_sanitizer.permit(:account_update, except: [:email])
+ (called from configure_permitted_parameters at /home/rajesh/livewire/app/controllers/application_controller.rb:16)
+  Rendered devise/shared/_links.html.erb (1.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (23.5ms)
+Completed 200 OK in 370ms (Views: 352.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/courses.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-07-30 11:25:11 +0530
+
+
+Started GET "/assets/roles.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-07-30 11:25:11 +0530
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2016-07-30 11:25:11 +0530
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-07-30 11:25:11 +0530
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-07-30 11:25:11 +0530
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-07-30 11:25:11 +0530
+
+
+Started GET "/assets/scaffolds.self-1d3540192e139620eda5ba7e8103d43b6edb78c49df0f191bdbc0c90fc6b2e85.css?body=1" for 127.0.0.1 at 2016-07-30 11:25:11 +0530
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-07-30 11:25:11 +0530
+
+
+Started GET "/assets/turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1" for 127.0.0.1 at 2016-07-30 11:25:11 +0530
+
+
+Started GET "/assets/courses.self-6327ea273dd8960efc9ba63b8eb0e28b4d5328727c9e1f89e7d026160fef0c25.js?body=1" for 127.0.0.1 at 2016-07-30 11:25:11 +0530
+
+
+Started GET "/assets/roles.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-07-30 11:25:11 +0530
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-07-30 11:25:11 +0530
+
+
+Started GET "/assets/welcome.self-2d92eed3644ad83b2dc7ccf0a8d4cacf62b3f676c17ee149010226d278fe8e62.js?body=1" for 127.0.0.1 at 2016-07-30 11:25:11 +0530
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-07-30 11:25:11 +0530
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2016-07-30 11:25:18 +0530
+Processing by Devise::RegistrationsController#new as HTML
+DEPRECATION WARNING: [Devise] Changing the sanitized parameters through "Devise::ParameterSanitizer#for(sign_up) is deprecated and it will be removed from Devise 4.2.
+Please use the `permit` method to add or remove any key:
+
+  To add any new key, use the `keys` keyword argument:
+  devise_parameter_sanitizer.permit(:sign_up, keys: [:param1, :param2, :param3])
+
+  To remove any existing key, use the `except` keyword argument:
+  devise_parameter_sanitizer.permit(:sign_up, except: [:email])
+ (called from configure_permitted_parameters at /home/rajesh/livewire/app/controllers/application_controller.rb:15)
+DEPRECATION WARNING: [Devise] Changing the sanitized parameters through "Devise::ParameterSanitizer#for(account_update) is deprecated and it will be removed from Devise 4.2.
+Please use the `permit` method to add or remove any key:
+
+  To add any new key, use the `keys` keyword argument:
+  devise_parameter_sanitizer.permit(:account_update, keys: [:param1, :param2, :param3])
+
+  To remove any existing key, use the `except` keyword argument:
+  devise_parameter_sanitizer.permit(:account_update, except: [:email])
+ (called from configure_permitted_parameters at /home/rajesh/livewire/app/controllers/application_controller.rb:16)
+  Rendered devise/shared/_links.html.erb (0.5ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (12.3ms)
+Completed 200 OK in 103ms (Views: 97.7ms | ActiveRecord: 0.0ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'ragu@example.com' LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("name", "email", "encrypted_password", "role_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "ragu"], ["email", "ragu@example.com"], ["encrypted_password", "$2a$11$2mPIBZCT6F7o/Ejj1g.bGe3igM9CREBgqh3k89uVnSWk1f./Y1fGW"], ["role_id", 1], ["created_at", "2016-07-30 05:58:43.203272"], ["updated_at", "2016-07-30 05:58:43.203272"]]
+  [1m[35m (154.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'rajesh@example.com' LIMIT 1
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "email", "encrypted_password", "role_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "rajesh"], ["email", "rajesh@example.com"], ["encrypted_password", "$2a$11$zejaWjB0NxcrML9yDKSZbudb2eDe0t6zyQyLQQrPIIcn6YRStAyYW"], ["role_id", 1], ["created_at", "2016-07-30 05:58:43.596914"], ["updated_at", "2016-07-30 05:58:43.596914"]]
+  [1m[36m (150.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'vimal@example.com' LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("name", "email", "encrypted_password", "role_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "vimal"], ["email", "vimal@example.com"], ["encrypted_password", "$2a$11$NIdYliifDw8Y8Qu4I3SuEeAVu.vS0Coy9SCqWnQB5Bnb9j/nH7USW"], ["role_id", 2], ["created_at", "2016-07-30 05:58:43.986459"], ["updated_at", "2016-07-30 05:58:43.986459"]]
+  [1m[35m (173.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'jackson@example.com' LIMIT 1
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("name", "email", "encrypted_password", "role_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Jackson"], ["email", "jackson@example.com"], ["encrypted_password", "$2a$11$h5kOPIBVtmZfLF2fMNCE4OCyzVtQbC1xKhhI6TynXXsZhjLhcLVZC"], ["role_id", 2], ["created_at", "2016-07-30 05:58:44.428157"], ["updated_at", "2016-07-30 05:58:44.428157"]]
+  [1m[36m (164.5ms)[0m  [1mcommit transaction[0m
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-07-30 11:28:53 +0530
+Processing by Devise::SessionsController#new as HTML
+DEPRECATION WARNING: [Devise] Changing the sanitized parameters through "Devise::ParameterSanitizer#for(sign_up) is deprecated and it will be removed from Devise 4.2.
+Please use the `permit` method to add or remove any key:
+
+  To add any new key, use the `keys` keyword argument:
+  devise_parameter_sanitizer.permit(:sign_up, keys: [:param1, :param2, :param3])
+
+  To remove any existing key, use the `except` keyword argument:
+  devise_parameter_sanitizer.permit(:sign_up, except: [:email])
+ (called from configure_permitted_parameters at /home/rajesh/livewire/app/controllers/application_controller.rb:15)
+DEPRECATION WARNING: [Devise] Changing the sanitized parameters through "Devise::ParameterSanitizer#for(account_update) is deprecated and it will be removed from Devise 4.2.
+Please use the `permit` method to add or remove any key:
+
+  To add any new key, use the `keys` keyword argument:
+  devise_parameter_sanitizer.permit(:account_update, keys: [:param1, :param2, :param3])
+
+  To remove any existing key, use the `except` keyword argument:
+  devise_parameter_sanitizer.permit(:account_update, except: [:email])
+ (called from configure_permitted_parameters at /home/rajesh/livewire/app/controllers/application_controller.rb:16)
+  Rendered devise/shared/_links.html.erb (0.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 56ms (Views: 52.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-07-30 11:29:06 +0530
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"pudt/+GxkZxOZOfQPDyMkNFoTP97blG62OUKzrPFb57Tv/2xp3f17zXEFpvhHSxBxbBKYcATM+yJRRcJIN7pFA==", "user"=>{"email"=>"rajesh@example.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+DEPRECATION WARNING: [Devise] Changing the sanitized parameters through "Devise::ParameterSanitizer#for(sign_up) is deprecated and it will be removed from Devise 4.2.
+Please use the `permit` method to add or remove any key:
+
+  To add any new key, use the `keys` keyword argument:
+  devise_parameter_sanitizer.permit(:sign_up, keys: [:param1, :param2, :param3])
+
+  To remove any existing key, use the `except` keyword argument:
+  devise_parameter_sanitizer.permit(:sign_up, except: [:email])
+ (called from configure_permitted_parameters at /home/rajesh/livewire/app/controllers/application_controller.rb:15)
+DEPRECATION WARNING: [Devise] Changing the sanitized parameters through "Devise::ParameterSanitizer#for(account_update) is deprecated and it will be removed from Devise 4.2.
+Please use the `permit` method to add or remove any key:
+
+  To add any new key, use the `keys` keyword argument:
+  devise_parameter_sanitizer.permit(:account_update, keys: [:param1, :param2, :param3])
+
+  To remove any existing key, use the `except` keyword argument:
+  devise_parameter_sanitizer.permit(:account_update, except: [:email])
+ (called from configure_permitted_parameters at /home/rajesh/livewire/app/controllers/application_controller.rb:16)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["email", "rajesh@example.com"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "remember_created_at" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["remember_created_at", "2016-07-30 05:59:06.649200"], ["updated_at", "2016-07-30 05:59:06.666793"], ["id", 2]]
+  [1m[36m (133.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["last_sign_in_at", "2016-07-30 05:59:06.804969"], ["current_sign_in_at", "2016-07-30 05:59:06.804969"], ["last_sign_in_ip", "127.0.0.1"], ["current_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2016-07-30 05:59:06.806750"], ["id", 2]]
+  [1m[35m (127.8ms)[0m  commit transaction
+Redirected to http://localhost:3000/admin/users
+Completed 302 Found in 544ms (ActiveRecord: 263.4ms)
+
+
+Started GET "/admin/users" for 127.0.0.1 at 2016-07-30 11:29:06 +0530
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mRole Load (0.1ms)[0m  SELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mRole Load (0.1ms)[0m  SELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered users/index.html.erb within layouts/application (6.6ms)
+Completed 200 OK in 39ms (Views: 30.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2016-07-30 11:29:25 +0530
+Processing by CoursesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCourse Load (0.3ms)[0m  SELECT "courses".* FROM "courses"
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered courses/index.html.erb within layouts/application (19.9ms)
+Completed 200 OK in 77ms (Views: 47.4ms | ActiveRecord: 1.4ms)
