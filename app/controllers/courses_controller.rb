@@ -5,7 +5,9 @@ load_and_authorize_resource
   # GET /courses
   # GET /courses.json
   def index
+   @courses = Course.all.paginate(page: params[:page], per_page:3)
    @course = Course.new
+@test = D.all
    
   end
 

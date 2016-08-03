@@ -6,6 +6,10 @@ gem 'rails', '4.2.6'
 gem 'cancancan', '~> 1.10'
 gem 'devise'
 gem 'paperclip'
+gem 'will_paginate'
+gem 'sidekiq'
+gem 'sunspot_rails'
+gem 'sunspot_solr'
 
   #gem "meta_search", '>= 1.1.0.pre'#for rails less than 4
   #gem 'activeadmin'#for rails less than 4
@@ -55,6 +59,7 @@ group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 gem 'sqlite3'
+gem 'better_errors'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'

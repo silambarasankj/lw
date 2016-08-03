@@ -63,7 +63,7 @@ load_and_authorize_resource
 
     respond_to do |format|
       if successfully_updated
-	UserMailer.welcome_email(@user).deliver_now
+	UserMailer.delay_for(1.minutes).welcome_email(@user) #sidekiq used here otherwise add deliver_now
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else

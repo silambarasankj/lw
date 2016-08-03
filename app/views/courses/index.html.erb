@@ -36,7 +36,7 @@
     <% end %>
   </tbody>
 </table>
-
+<%= will_paginate @courses %>
 <br>
 
 <%= form_for(@course, remote: true) do |f| %>

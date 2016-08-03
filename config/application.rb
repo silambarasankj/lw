@@ -2,6 +2,21 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
+require 'sinatra'
+require 'better_errors'
+
+# Just in development!
+configure :development do
+  use BetterErrors::Middleware
+  # you need to set the application root in order to abbreviate filenames
+  # within the application:
+  BetterErrors.application_root = File.expand_path('..', __FILE__)
+end
+
+get '/' do
+  raise 'Oops! See you at the better_errors error page!'
+end
+
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)

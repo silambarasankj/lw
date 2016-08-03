@@ -65,13 +65,6 @@
     <%= f.text_field :price %>
   </div>
 
-<div class="field">
-<%= f.select :country, options_for_select(@countries.collect { |country|
-    [country.name.titleize, country.id] }, 1), {}, { id: 'countries_select' } %></div>
-
-<div class="field">
-  <%= f.select :city, options_for_select(@cities.collect { |city|
-    [city.name.titleize, city.id] }, 0), {}, { id: 'cities_select' } %></div>
   <div class="actions">
     <%= f.submit %>
   </div>

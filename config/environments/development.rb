@@ -12,6 +12,7 @@ Rails.application.configure do
 config.action_mailer.default_url_options = {:host => 'localhost:3000'}
 #simbu
 config.action_mailer.delivery_method = :smtp
+BetterErrors::Middleware.allow_ip! ENV['TRUSTED_IP'] if ENV['TRUSTED_IP']
 # SMTP settings for gmail
 config.action_mailer.smtp_settings = {
  :address              => "smtp.gmail.com",
