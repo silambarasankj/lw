@@ -10,6 +10,7 @@ gem 'will_paginate'
 gem 'sidekiq'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
+gem 'rack-timeout', '0.3.2'
 
   #gem "meta_search", '>= 1.1.0.pre'#for rails less than 4
   #gem 'activeadmin'#for rails less than 4
